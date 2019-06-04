@@ -1,7 +1,8 @@
 # Vik_Game2d
 
 ## LINKS
-- UML : https://drive.google.com/drive/folders/1Iz2kLSk2R_jh3GFXZFUocJBbTZfJhiH-
+- UML : https://drive.google.com/drive/folders/1Iz2kLSk2R_jh3GFXZFUocJBbTZfJhiH
+- https://preshing.com/20171218/how-to-write-your-own-cpp-game-engine/
 
 
 # Norm 
