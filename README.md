@@ -11,7 +11,8 @@
 Commence par une miniscule et chaque nouveaumot commence par une majuscule, pas d'underscore
 
 **Exemple :**
-```	maFonction()
+```Cpp
+maFonction()
 	{
 
 	}```
