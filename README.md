@@ -13,6 +13,7 @@ Commence par une miniscule et chaque nouveaumot commence par une majuscule, pas 
 **Exemple :**
 ```Cpp
 maFonction()
-	{
+{
 
-	}```
+}
+```
