@@ -61,5 +61,6 @@ Les commentaires doivent expliciter le fonctionnement des fonctions/methodes
 ## Headers
 
 Pas de namespace
+
 Equivalent a la norme 42
 
