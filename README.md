@@ -40,6 +40,12 @@ Commence par une majuscule et chaque nouveau mot commence par une majuscule, pas
 
 Classe : **Rectangle** -> Methode : **rectangle.drawColor** 
 
+- setter introduits par set :
+**setVariable(param, ...)**
+
+- getter introduits par get :
+**getVariable()**
+
 ## Commentaires
 
 Les commentaires ne doivent pas etre : 
