@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/VikTek2d.dir/src/main.cpp.o  -o VikTek2d -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lVik_Wrap 

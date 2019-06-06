@@ -1,0 +1,3 @@
+/home/gal/101/VikTek2d/CMakeFiles/rebuild_cache.dir
+/home/gal/101/VikTek2d/CMakeFiles/VikTek2d.dir
+/home/gal/101/VikTek2d/CMakeFiles/edit_cache.dir

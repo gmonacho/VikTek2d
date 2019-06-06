@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gal/101/VikTek2d/src/main.cpp
+iostream
+-
+VRA/Init.h
+-
+VRA/Window.h
+-
+VRA/Event.h
+-
+VRA/Renderer.h
+-
+
