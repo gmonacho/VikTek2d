@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/gal/101/VikTek2d/src/main.cpp
+/Users/gmonacho/Documents/101/VikTek2d/src/main.cpp
 iostream
 -
 VRA/Init.h
