@@ -19,7 +19,7 @@ int		main()
 		event.waitEvent();
 		if (event.isKeyPressed(SDL_SCANCODE_ESCAPE) || event.getEvent().type == SDL_QUIT)
 			loop = false;
-		renderer.display();
+		renderer.draw();
 	}
 	std::cout << "Hello World !" << std::endl;
 	return (1);
