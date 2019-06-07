@@ -1,3 +1,0 @@
-/Users/gmonacho/Documents/101/VikTek2d/CMakeFiles/rebuild_cache.dir
-/Users/gmonacho/Documents/101/VikTek2d/CMakeFiles/edit_cache.dir
-/Users/gmonacho/Documents/101/VikTek2d/CMakeFiles/VikTek2d.dir
