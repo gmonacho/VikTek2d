@@ -3,6 +3,7 @@
 #include <VRA/Window.h>
 #include <VRA/Event.h>
 #include <VRA/Renderer.h>
+#include "Scene.h"
 
 int		main()
 {
@@ -10,6 +11,7 @@ int		main()
 	vra::Window 	window{"VikTek2d Main Test Program", 100, 100, 800, 600, SDL_WINDOW_SHOWN};
 	vra::Renderer	renderer{window, true, 0};
 	vra::Event		event{};
+	vt2d::Scene		scene{renderer, vra::Rect{0, 0, 800, 600}};
 	bool			loop{true};
 
 	while (loop)

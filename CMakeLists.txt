@@ -16,7 +16,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${VIK_WRAP_INCLUDE_DIR} 
 # add_library(${PROJECT_NAME})
 
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME}
+        src/main.cpp
+        src/Scene.cpp)
 
 if (MINGW)
         set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lVik_Wrap)
