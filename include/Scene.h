@@ -1,5 +1,5 @@
-#include <VRA/Renderer.h>
-#include <VRA/Rect.h>
+#include <Renderer.h>
+#include <Rect.h>
 
 namespace vt2d
 {

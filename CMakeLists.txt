@@ -20,10 +20,7 @@ add_executable(${PROJECT_NAME}
         src/main.cpp
         src/Scene.cpp)
 
-if (MINGW)
-        set(LIBRARIES -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lVik_Wrap)
-elseif (UNIX)
-        set(LIBRARIES ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${VIK_WRAP_LIBRARY})
-endif()
+
+set(LIBRARIES -L/${VIK_WRAP_LIBRARY_DIR} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${VIK_WRAP_LIBRARY})
 
 target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
