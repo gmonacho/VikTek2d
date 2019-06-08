@@ -3,6 +3,8 @@
 ## LINKS
 - UML : https://drive.google.com/drive/folders/1Iz2kLSk2R_jh3GFXZFUocJBbTZfJhiH
 - https://preshing.com/20171218/how-to-write-your-own-cpp-game-engine/
+VS
+- https://www.gamasutra.com/blogs/MichaelKissner/20151027/257369/Writing_a_Game_Engine_from_Scratch__Part_1_Messaging.php
 
 
 # Norm 
