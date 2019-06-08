@@ -6,8 +6,40 @@
 VS
 - https://www.gamasutra.com/blogs/MichaelKissner/20151027/257369/Writing_a_Game_Engine_from_Scratch__Part_1_Messaging.php
 
+# Norm
 
-# Norm 
+## CppLint Norm
+
+Except "-whitespace/braces", "-readability/braces", "-whitespace/newline".
+we favor (to improve readability <3):
+```cpp
+funcion()
+{
+  //  ...
+}
+
+if ()
+{
+  //  ...
+}
+else
+{
+  //  ...
+}
+```
+than :
+
+```cpp
+funcion() {
+  //  ...
+}
+
+if () {
+  //  ...
+} else {
+  //  ...
+}
+```
 
 ## Les fonctions
 
