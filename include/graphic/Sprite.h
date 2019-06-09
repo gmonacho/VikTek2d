@@ -5,6 +5,7 @@
 #include <string>
 #include <Texture.h>
 #include <Rect.h>
+#include <Camera.h>
 
 namespace vt2
 {
@@ -12,17 +13,17 @@ namespace vt2
 class Sprite
 {
  private:
-    vra::Texture     m_texture;
-    int m_x; int m_y; int m_w; int m_h;
-    bool  m_hidden;
+    vra::Texture  m_texture;
+    int           m_x, m_y, m_w, m_h;
+    bool          m_hidden;
 
  public:
    /**
     * @brief  Sprite Constructor
-    * @note   x, y are sprite's center coordinates
+    * @note   x, y are sprite's up left corner position
     * @param  &filepath: the image file (supported : png)
-    * @param  &x: sprite's center x
-    * @param  &y: sprite's center y
+    * @param  &x: sprite's x position
+    * @param  &y: sprite's y position
     * @param  &w: sprite's width
     * @param  &h: sprite's height
     * @retval None

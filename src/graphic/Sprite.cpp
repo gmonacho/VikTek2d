@@ -1,6 +1,7 @@
 #include <Sprite.h>
 #include <Rect.h>
 #include <Renderer.h>
+#include <Camera.h>
 
 namespace vt2
 {
@@ -18,7 +19,6 @@ Sprite::Sprite(const vra::Renderer &renderer,
                m_hidden(false)
 {
     m_texture = vra::Texture{renderer, filepath};
-    m_texture.setCenter(vra::Point{w / 2, h / 2});
 }
 
 Sprite              &Sprite::draw(vra::Renderer *renderer)
@@ -26,9 +26,9 @@ Sprite              &Sprite::draw(vra::Renderer *renderer)
     if (m_hidden == false)
     {
         vra::Rect   rect{m_x - m_texture.getCenter().getX(),
-                        m_y - m_texture.getCenter().getY(),
-                        m_w, m_h};
-
+                         m_y - m_texture.getCenter().getY(),
+                         m_w,
+                         m_h};
         renderer->drawTexture(m_texture, nullptr, &rect);
     }
     return (*this);
