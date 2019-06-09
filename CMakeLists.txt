@@ -11,14 +11,14 @@ find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(Vik_Wrap REQUIRED)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${VIK_WRAP_INCLUDE_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic ${VIK_WRAP_INCLUDE_DIR} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
 # add_library(${PROJECT_NAME})
 
 
 add_executable(${PROJECT_NAME}
-        src/main.cpp
-        src/Scene.cpp)
+        src/graphic/Sprite.cpp
+        src/main.cpp)
 
 
 set(LIBRARIES -L/${VIK_WRAP_LIBRARY_DIR} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${VIK_WRAP_LIBRARY})
