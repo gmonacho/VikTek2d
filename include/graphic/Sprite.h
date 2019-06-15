@@ -99,7 +99,7 @@ class Sprite
      * @param  angle: angle in degree
      * @retval None
      */
-    Sprite              &rotate(const double &angle);
+    Sprite              &rotate(const float &angle);
 
    /**
     * @brief  flip the sprite horizontaly or verticaly
@@ -116,7 +116,7 @@ class Sprite
      * @note   
      * @retval sprite's angle rotation
      */
-    const double        &getAngle() const;
+    const float        &getAngle() const;
 
     /**
      * @brief  get sprite's center position

@@ -70,7 +70,7 @@ Sprite              &Sprite::setHeight(const int &height)
         m_h = height;
 }
 
-Sprite              &Sprite::rotate(const double &angle)
+Sprite              &Sprite::rotate(const float &angle)
 {
     m_texture.rotate(angle);
     return (*this);
@@ -94,7 +94,7 @@ Sprite              &Sprite::flip(const Uint8 &way)
     }
 }
 
-const double        &Sprite::getAngle() const
+const float     &Sprite::getAngle() const
 {
     return (m_texture.getAngle());
 }
