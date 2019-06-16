@@ -6,8 +6,7 @@
 namespace vt2
 {
 
-Sprite::Sprite(const vra::Renderer &renderer,
-               const std::string &filepath,
+Sprite::Sprite(vra::Texture *texture,
                const int &x,
                const int &y,
                const int &w,
@@ -16,20 +15,18 @@ Sprite::Sprite(const vra::Renderer &renderer,
                m_y(y),
                m_w(w),
                m_h(h),
-               m_hidden(false)
-{
-    m_texture = vra::Texture{renderer, filepath};
-}
+               m_hidden(false),
+               m_texture(texture) {}
 
 Sprite              &Sprite::draw(vra::Renderer *renderer)
 {
     if (m_hidden == false)
     {
-        vra::Rect   rect{m_x - m_texture.getCenter().getX(),
-                         m_y - m_texture.getCenter().getY(),
+        vra::Rect   rect{m_x - m_texture->getCenter().getX(),
+                         m_y - m_texture->getCenter().getY(),
                          m_w,
                          m_h};
-        renderer->drawTexture(m_texture, nullptr, &rect);
+        renderer->drawTexture(*m_texture, nullptr, &rect);
     }
     return (*this);
 }
@@ -72,7 +69,7 @@ Sprite              &Sprite::setHeight(const int &height)
 
 Sprite              &Sprite::rotate(const float &angle)
 {
-    m_texture.rotate(angle);
+    m_texture->rotate(angle);
     return (*this);
 }
 
@@ -80,33 +77,33 @@ Sprite              &Sprite::flip(const Uint8 &way)
 {
     if (way & FLIP_HORIZONTAL)
     {
-        if (!(m_texture.getFlip() & SDL_FLIP_HORIZONTAL))
+        if (!(m_texture->getFlip() & SDL_FLIP_HORIZONTAL))
         {
-            m_texture.setFlip(static_cast<SDL_RendererFlip>
-                             (m_texture.getFlip() |
+            m_texture->setFlip(static_cast<SDL_RendererFlip>
+                             (m_texture->getFlip() |
                               SDL_FLIP_HORIZONTAL));
         }
         else
         {
-            m_texture.setFlip(static_cast<SDL_RendererFlip>
-                             (m_texture.getFlip() - SDL_FLIP_HORIZONTAL));
+            m_texture->setFlip(static_cast<SDL_RendererFlip>
+                             (m_texture->getFlip() - SDL_FLIP_HORIZONTAL));
         }
     }
 }
 
 const float     &Sprite::getAngle() const
 {
-    return (m_texture.getAngle());
+    return (m_texture->getAngle());
 }
 
 const vra::Point    &Sprite::getCenter() const
 {
-    return (m_texture.getCenter());
+    return (m_texture->getCenter());
 }
 
 Sprite              &Sprite::setCenter(const vra::Point &center)
 {
-    m_texture.setCenter(center);
+    m_texture->setCenter(center);
 }
 
 Sprite              &Sprite::hide()

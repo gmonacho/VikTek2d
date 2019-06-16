@@ -13,27 +13,16 @@ namespace vt2
 class Sprite
 {
  private:
-    vra::Texture  m_texture;
+    vra::Texture  *m_texture;
     int           m_x, m_y, m_w, m_h;
     bool          m_hidden;
 
  public:
-   /**
-    * @brief  Sprite Constructor
-    * @note   x, y are sprite's up left corner position
-    * @param  &filepath: the image file (supported : png)
-    * @param  &x: sprite's x position
-    * @param  &y: sprite's y position
-    * @param  &w: sprite's width
-    * @param  &h: sprite's height
-    * @retval None
-    */
-    Sprite(const vra::Renderer &renderer,
-         const std::string &filepath,
-         const int &x,
-         const int &y,
-         const int &w,
-         const int &h);
+    Sprite(vra::Texture *texture,
+           const int &x,
+           const int &y,
+           const int &w,
+           const int &h);
 
     virtual             ~Sprite() = default;
 

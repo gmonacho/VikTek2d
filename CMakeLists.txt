@@ -19,6 +19,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic ${VIK_WRAP_INCLU
 add_executable(${PROJECT_NAME}
         src/graphic/Sprite.cpp
         src/graphic/Camera.cpp
+        src/graphic/Text.cpp
         src/main.cpp)
 
 
