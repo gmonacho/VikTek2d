@@ -3,13 +3,27 @@
 #include <Font.h>
 #include <Renderer.h>
 #include <Exception.h>
+#include "vikString.h"
 
 namespace vt2
 {
 
 Text    &Text::updateTabTexture(const vra::Renderer &renderer)
 {
-    m_tabTexture[0] = m_font->renderText(renderer, m_text, m_color);
+    for (int i{0}; i < m_tabText.size(); i++)
+    {
+        if (i < m_tabTexture.size())
+            m_tabTexture[i] = m_font->renderText(renderer,
+                                            m_tabText[i],
+                                            m_color);
+        else
+            m_tabTexture.push_back(m_font->renderText(renderer,
+                                m_tabText[i],
+                                m_color));
+    }
+    if (m_tabTexture.empty())
+        throw(std::logic_error("text rendering failed"));
+    Text::setAlign(m_alignment);
     return (*this);
 }
 
@@ -123,7 +137,6 @@ Text::Text(const vra::Renderer &renderer,
            const int &w,
            const int &h,
            const SDL_Color &color) :
-           m_text(text),
            m_x(x),
            m_y(y),
            m_w(w),
@@ -132,78 +145,76 @@ Text::Text(const vra::Renderer &renderer,
            m_font(font),
            m_alignment(TEXT_AL_LEFT)
 {
-    int     i{0};
-    int     pos{0};
-
-    while (text[i] == '\n' && i < text.size())
-        i++;
-    pos = i;
-    while (i < text.size())
-    {
-        if (text[i] == '\n' && i != 0 && text[i - 1] != '\n')
-        {
-            m_tabTexture.push_back(m_font->renderText(renderer,
-                                   text.substr(pos, i - pos),
-                                   color));
-            while (text[i + 1] == '\n' && i < text.size() - 1)
-                i++;
-            pos = i + 1;
-        }
-        i++;
-    }
-    if (i != 0 && text[i - 1] != '\n')
+    if ((m_tabText = vik::strSplit(text, '\n')).empty())
+        throw(std::logic_error("invalid text"));
+    for (int i{0}; i < m_tabText.size(); i++)
     {
         m_tabTexture.push_back(m_font->renderText(renderer,
-                               text.substr(pos, i - pos),
+                               m_tabText[i],
                                color));
     }
     if (m_tabTexture.empty())
-        throw(std::bad_alloc());    //  pas de texte valide
-    alignLeft();
+        throw(std::logic_error("text rendering failed"));
+    Text::alignLeft();
 }
 
 Text    &Text::draw(vra::Renderer *renderer)
 {
-    int         i{0};
-
     if (renderer)
     {
-        i = 0;
-        while (i < m_tabTexture.size())
-        {
+        for (int i{0}; i < m_tabTexture.size(); i++)
             renderer->drawTexture(m_tabTexture[i], nullptr, &m_tabRect[i]);
-            i++;
-        }
     }
 }
 
 Text    &Text::setText(const vra::Renderer &renderer,
                        const std::string &text)
 {
-    if (m_text != text)
-    {
-        m_text = text;
-        updateTabTexture(renderer);
-    }
+    if ((m_tabText = vik::strSplit(text, '\n')).empty())
+        throw(std::logic_error("invalid text"));
+    Text::updateTabTexture(renderer);
+    return (*this);
+}
+
+const std::vector<std::string>   &Text::getText() const
+{
+    return (m_tabText);
 }
 
 Text    &Text::setAlign(const Uint8 alignment)
 {
-    switch(alignment)
-    {
-        case(TEXT_AL_LEFT) :
-            alignLeft();
-        case(TEXT_AL_RIGHT) :
-            alignRight();
-        case(TEXT_AL_MIDDLE) :
-            alignMiddle();
-    }
-
+    // switch (alignment) ca marche pas why?
+    // {
+    //     case(TEXT_AL_LEFT) :
+    //         Text::alignLeft();
+    //     case(TEXT_AL_RIGHT) :
+    //         Text::alignRight();
+    //     case(TEXT_AL_MIDDLE) :
+    //         Text::alignMiddle();
+    // }
+    if (alignment == TEXT_AL_LEFT)
+        Text::alignLeft();
+    else if (alignment == TEXT_AL_MIDDLE)
+        Text::alignMiddle();
+    else if (alignment == TEXT_AL_RIGHT)
+        Text::alignRight();
+    m_alignment = alignment;
 }
 
-const std::string   &Text::getText() const
+const Uint8   &Text::getAlign() const
 {
-    return (m_text);
+    return (m_alignment);
+}
+
+Text    &Text::setColor(const vra::Renderer &renderer, const SDL_Color &color)
+{
+    m_color = color;
+    Text::updateTabTexture(renderer);
+}
+
+const SDL_Color  &Text::getColor() const
+{
+    return (m_color);
 }
 
 }   //  namespace vt2

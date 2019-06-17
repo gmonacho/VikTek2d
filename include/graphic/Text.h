@@ -13,8 +13,8 @@ namespace vt2
 class Text
 {
  private:
-    std::string                  m_text;
     vra::Font                   *m_font;
+    std::vector<std::string>     m_tabText;
     std::vector<vra::Texture>    m_tabTexture;
     std::vector<vra::Rect>       m_tabRect;
     SDL_Color                    m_color;
@@ -43,9 +43,16 @@ class Text
     Text    &setText(const vra::Renderer &renderer,
                      const std::string &text);
 
-    Text    &setAlign(const Uint8 alignment);
+    const std::vector<std::string>   &getText() const;
 
-    const std::string   &getText() const;
+    Text          &setAlign(const Uint8 alignment);
+
+    const Uint8   &getAlign() const;
+
+    Text    &setColor(const vra::Renderer &renderer,
+                            const SDL_Color &color);
+
+    const SDL_Color  &getColor() const;
 };
 
 enum  e_alignment {TEXT_AL_LEFT, TEXT_AL_MIDDLE, TEXT_AL_RIGHT};

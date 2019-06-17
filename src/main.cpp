@@ -8,6 +8,7 @@
 #include <Text.h>
 #include <Exception.h>
 #include <Texture.h>
+#include "vikString.h"
 
 int     main()
 {
@@ -25,12 +26,14 @@ int     main()
     vt2::Text       text{renderer,
                          "retour\na\nla\nligne",
                          &font,
-                         50, 50, 100, 100,
+                         50, 50, 150, 150,
                          (SDL_Color){255, 255, 255, 255}};
+    std::vector<std::string>    splitTab;
     bool            loop{true};
 
     renderer.setDrawBlendMode(SDL_BLENDMODE_BLEND);
-    text.setAlign(vt2::TEXT_AL_MIDDLE);
+    text.setAlign(vt2::TEXT_AL_RIGHT);
+    text.setColor(renderer, (SDL_Color){200, 200, 200, 255});
     while (loop)
     {
         renderer.setDrawColor(50, 50, 50, 255);
