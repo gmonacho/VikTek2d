@@ -167,6 +167,17 @@ Text    &Text::draw(vra::Renderer *renderer)
     }
 }
 
+Text    &Text::setFont(const vra::Renderer &renderer, vra::Font *font)
+{
+    m_font = font;
+    Text::updateTabTexture(renderer);
+}
+
+vra::Font *Text::getFont() const
+{
+    return (m_font);
+}
+
 Text    &Text::setText(const vra::Renderer &renderer,
                        const std::string &text)
 {

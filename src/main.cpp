@@ -23,6 +23,7 @@ int     main()
     // vt2::Sprite     frame{renderer, "./rectangle.png", 0, 0, 800, 600};
     vt2::Sprite     sprite{&texture, 300, 200, 200, 300};
     vra::Font       font{"./font/OpenSans-Bold.ttf", 100};
+    vra::Font       ifont{"./font/OpenSans-Italic.ttf", 100};
     vt2::Text       text{renderer,
                          "retour\na\nla\nligne",
                          &font,
