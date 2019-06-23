@@ -18,7 +18,7 @@ Sprite::Sprite(vra::Texture *texture,
                m_hidden(false),
                m_texture(texture) {}
 
-Sprite              &Sprite::draw(vra::Renderer *renderer)
+Sprite              &Sprite::draw(vra::Renderer *renderer) const
 {
     if (m_hidden == false)
     {

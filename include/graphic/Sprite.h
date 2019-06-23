@@ -32,7 +32,7 @@ class Sprite
     * @param  *renderer: renderer where the sprite will be draw
     * @retval the sprite reference
     */
-    Sprite              &draw(vra::Renderer *renderer);
+    Sprite              &draw(vra::Renderer *renderer) const;
 
     /**
      * @brief  move the sprite
