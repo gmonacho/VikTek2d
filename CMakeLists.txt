@@ -12,6 +12,8 @@ find_package(SDL2_ttf REQUIRED)
 find_package(Vik_Wrap REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include/input
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/lvik
                     ${VIK_WRAP_INCLUDE_DIR}
                     ${SDL2_INCLUDE_DIR}
@@ -20,11 +22,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
 
 # add_library(${PROJECT_NAME})
 
-
 add_executable(${PROJECT_NAME}
         src/graphic/Sprite.cpp
         src/graphic/Camera.cpp
         src/graphic/Text.cpp
+        src/physic/Object.cpp
         src/lvik/vikString.cpp
         src/main.cpp)
 
