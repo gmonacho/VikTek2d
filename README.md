@@ -1,5 +1,9 @@
 # VikTek2d
 
+## Objectif
+
+Developper un moteur de jeu 2d simple d'utilisation non limitant, a fin de convenir au maximum de type de jeu possible. Le moteur sera specialise dans certain type une fois la partie general termine.
+
 ## LINKS
 - UML : https://drive.google.com/drive/folders/1Iz2kLSk2R_jh3GFXZFUocJBbTZfJhiH
 - https://preshing.com/20171218/how-to-write-your-own-cpp-game-engine/
