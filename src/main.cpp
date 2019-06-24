@@ -4,11 +4,12 @@
 #include <Event.h>
 #include <Renderer.h>
 #include <Sprite.h>
-#include <Camera.h>
 #include <Text.h>
 #include <Exception.h>
 #include <Texture.h>
+#include "Camera.h"
 #include "vikString.h"
+#include "Scene.h"
 
 int     main()
 {
@@ -20,21 +21,17 @@ int     main()
     vra::Event      event{};
     vt2::Camera     camera{0, 0, 1};
     vra::Texture    texture{renderer, "./floss.png"};
-    // vt2::Sprite     frame{renderer, "./rectangle.png", 0, 0, 800, 600};
-    vt2::Sprite     sprite{&texture, 300, 200, 200, 300};
-    vra::Font       font{"./font/OpenSans-Bold.ttf", 100};
-    vra::Font       ifont{"./font/OpenSans-Italic.ttf", 100};
-    vt2::Text       text{renderer,
-                         "retour\na\nla\nligne",
-                         &font,
-                         50, 50, 150, 150,
-                         (SDL_Color){255, 255, 255, 255}};
-    std::vector<std::string>    splitTab;
+    vra::Texture    texture2{renderer, "./png_des.png"};
+    vt2::Sprite     sprite1{&texture, 300, 200, 200, 300};
+    vt2::Sprite     sprite2{&texture2, 300, 200, 200, 300};
+    vt2::Scene      scene{&renderer, 2};
     bool            loop{true};
 
     renderer.setDrawBlendMode(SDL_BLENDMODE_BLEND);
-    text.setAlign(vt2::TEXT_AL_RIGHT);
-    text.setColor(renderer, (SDL_Color){200, 200, 200, 255});
+    scene.addSprite(&sprite1, 1, "sprite1");
+    scene.addSprite(&sprite2, 0, "sprite2");
+    scene.getSprite("sprite1")->rotate(90);
+    // scene.removeSprite("sprite2");
     while (loop)
     {
         renderer.setDrawColor(50, 50, 50, 255);
@@ -45,14 +42,8 @@ int     main()
         {
             loop = false;
         }
-        // sprite.rotate(0.5);
-        // sprite.move(sprite.getPosition().getX() > 800 ? -800 : 1, 0);
-        // camera.move(camera.getPosition().getX() > 400 ? -400 : 1, 0);
-        // frame.draw(&renderer);
-        sprite.draw(&renderer);
-        text.draw(&renderer);
+        scene.draw();
         renderer.setDrawColor(255, 0, 0, 255);
-        renderer.drawPoint(vra::Point{400, 300});
         renderer.draw();
     }
     std::cout << "Hello World !" << std::endl;

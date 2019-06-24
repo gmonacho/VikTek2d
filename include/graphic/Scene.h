@@ -12,12 +12,21 @@ namespace vt2
 class Scene
 {
  private:
-    std::vector<std::map<std::string, Sprite>>     m_sprites;
+    std::vector<std::map<std::string, Sprite*>>    m_sprites;
+// std::vector<std::map<std::string, Animation*>>  m_animations;
+
+    vra::Renderer *m_renderer;
+
 
  public:
-    explicit Scene(const int &groundNumber);
-    Scene   &addGraphicObject(Sprite graphicObj, const int &groundTier);
-    Scene   &draw() const;
+    explicit Scene(vra::Renderer *renderer, const int &groundNumber);
+    ~Scene() = default;
+    Scene   &addSprite(Sprite *sprite,
+                       const int &i_ground,
+                       const std::string &key);
+    Scene   &draw();
+    Sprite  *getSprite(const std::string &key);
+    Scene   &removeSprite(const std::string &key);
 };
 
 }   //  namespace vt2

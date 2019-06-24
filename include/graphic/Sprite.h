@@ -1,11 +1,10 @@
-
 #ifndef GRAPHIC_SPRITE_H_
 #define GRAPHIC_SPRITE_H_
 
 #include <string>
 #include <Texture.h>
 #include <Rect.h>
-#include <Camera.h>
+#include "Camera.h"
 
 namespace vt2
 {
@@ -32,7 +31,7 @@ class Sprite
     * @param  *renderer: renderer where the sprite will be draw
     * @retval the sprite reference
     */
-    Sprite              &draw(vra::Renderer *renderer) const;
+    Sprite              &draw(vra::Renderer *renderer);
 
     /**
      * @brief  move the sprite
