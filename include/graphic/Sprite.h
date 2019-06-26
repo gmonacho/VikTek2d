@@ -36,6 +36,10 @@ class Sprite
     */
     Sprite              &draw(vra::Renderer *renderer);
 
+    Sprite              &setTexture(vra::Texture *texture);
+
+    vra::Texture        *getTexture();
+
     /**
      * @brief  move the sprite
      * @note   

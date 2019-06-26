@@ -38,6 +38,18 @@ Sprite              &Sprite::draw(vra::Renderer *renderer)
     return (*this);
 }
 
+
+Sprite          &Sprite::setTexture(vra::Texture *texture)
+{
+    if (texture != nullptr)
+        m_texture = texture;
+}
+
+vra::Texture    *Sprite::getTexture()
+{
+    return (m_texture);
+}
+
 Sprite              &Sprite::move(const int &dx, const int &dy)
 {
     m_x += dx;
