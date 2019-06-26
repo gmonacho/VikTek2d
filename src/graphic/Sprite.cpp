@@ -15,6 +15,9 @@ Sprite::Sprite(vra::Texture *texture,
                m_y(y),
                m_w(w),
                m_h(h),
+               m_angle(0),
+               m_flip(SDL_FLIP_NONE),
+               m_center(vra::Point{m_w / 2, m_h / 2}),
                m_hidden(false),
                m_texture(texture) {}
 
@@ -22,11 +25,15 @@ Sprite              &Sprite::draw(vra::Renderer *renderer)
 {
     if (m_hidden == false)
     {
-        vra::Rect   rect{m_x - m_texture->getCenter().getX(),
-                         m_y - m_texture->getCenter().getY(),
+        vra::Rect   rect{m_x - m_center.getX(),
+                         m_y - m_center.getY(),
                          m_w,
                          m_h};
+        m_texture->setCenter(m_center);
+        m_texture->rotate(m_angle);
+        m_texture->setFlip(m_flip);
         renderer->drawTexture(*m_texture, nullptr, &rect);
+        m_texture->rotate(-m_angle);
     }
     return (*this);
 }
@@ -69,41 +76,30 @@ Sprite              &Sprite::setHeight(const int &height)
 
 Sprite              &Sprite::rotate(const float &angle)
 {
-    m_texture->rotate(angle);
+    m_angle += angle;
     return (*this);
 }
 
-Sprite              &Sprite::flip(const Uint8 &way)
+Sprite      &Sprite::setFlip(const SDL_RendererFlip &sdlFlip)
 {
-    if (way & FLIP_HORIZONTAL)
-    {
-        if (!(m_texture->getFlip() & SDL_FLIP_HORIZONTAL))
-        {
-            m_texture->setFlip(static_cast<SDL_RendererFlip>
-                             (m_texture->getFlip() |
-                              SDL_FLIP_HORIZONTAL));
-        }
-        else
-        {
-            m_texture->setFlip(static_cast<SDL_RendererFlip>
-                             (m_texture->getFlip() - SDL_FLIP_HORIZONTAL));
-        }
-    }
+    m_flip = sdlFlip;
+    return (*this);
 }
 
 const float     &Sprite::getAngle() const
 {
-    return (m_texture->getAngle());
+    return (m_angle);
 }
 
 const vra::Point    &Sprite::getCenter() const
 {
-    return (m_texture->getCenter());
+    return (m_center);
 }
 
 Sprite              &Sprite::setCenter(const vra::Point &center)
 {
-    m_texture->setCenter(center);
+    m_center = center;
+    return (*this);
 }
 
 Sprite              &Sprite::hide()

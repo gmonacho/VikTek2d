@@ -12,9 +12,12 @@ namespace vt2
 class Sprite
 {
  private:
-    vra::Texture  *m_texture;
-    int           m_x, m_y, m_w, m_h;
-    bool          m_hidden;
+    vra::Texture        *m_texture;
+    int                 m_x, m_y, m_w, m_h;
+    float               m_angle;
+    SDL_RendererFlip    m_flip;
+    vra::Point          m_center;
+    bool                m_hidden;
 
  public:
     Sprite(vra::Texture *texture,
@@ -90,14 +93,15 @@ class Sprite
     Sprite              &rotate(const float &angle);
 
    /**
-    * @brief  flip the sprite horizontaly or verticaly
+    * @brief  set the sprite split way
     * @note   
-    * @param  &sdlFlip: 
-    *                   FLIP_HORIZONTAL
-    *                   FLIP_VERTICAL
+    * @param  &flip: 
+    *                 SDL_FLIP_HORIZONTAL
+    *                 SDL_FLIP_VERTICAL
+    *                 SDL_FLIP_NONE
     * @retval the sprite's reference
     */
-    Sprite              &flip(const Uint8 &way);
+    Sprite              &setFlip(const SDL_RendererFlip &sdlFlip);
 
     /**
      * @brief  get sprite's angle rotation
@@ -133,12 +137,6 @@ class Sprite
       * @retval sprite's reference
       */
     Sprite              &show();
-};
-
-enum e_flip
-{
-  FLIP_HORIZONTAL = 0b01,
-  FLIP_VERTOCAL = 0b10
 };
 
 }   //  namespace vt2

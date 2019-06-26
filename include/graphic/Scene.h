@@ -16,8 +16,6 @@ class Scene
 // std::vector<std::map<std::string, Animation*>>  m_animations;
 
     vra::Renderer *m_renderer;
-
-
  public:
     explicit Scene(vra::Renderer *renderer, const int &groundNumber);
     ~Scene() = default;
@@ -30,5 +28,4 @@ class Scene
 };
 
 }   //  namespace vt2
-
 #endif  //  GRAPHIC_SCENE_H_
