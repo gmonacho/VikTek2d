@@ -74,7 +74,7 @@ vra::Point          Sprite::getSize()
     return (vra::Point{m_w, m_h});
 }
 
-Sprite              &Sprite::setWitdh(const int &width)
+Sprite              &Sprite::setWidth(const int &width)
 {
     if (width >= 0)
         m_w = width;

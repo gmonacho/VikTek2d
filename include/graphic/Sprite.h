@@ -78,7 +78,7 @@ class Sprite
       * @param  &width: new width
       * @retval the sprite reference
       */
-    Sprite              &setWitdh(const int &width);
+    Sprite              &setWidth(const int &width);
 
      /**
       * @brief  set the sprite's height

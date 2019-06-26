@@ -20,18 +20,17 @@ int     main()
     vra::Renderer   renderer{window, true, 0};
     vra::Event      event{};
     vt2::Camera     camera{0, 0, 1};
-    vra::Texture    texture{renderer, "./floss.png"};
-    vra::Texture    texture2{renderer, "./png_des.png"};
+    vra::Texture    texture{&renderer, "./floss.png"};
+    vra::Texture    texture2{&renderer, "./png_des.png"};
     vt2::Sprite     sprite1{&texture, 400, 300, 200, 300};
-    vt2::Sprite     sprite2{&texture, 400, 300, 200, 300};
-    vt2::Scene      scene{&renderer, 2};
+    vt2::Sprite     sprite2{&texture2, 400, 300, 200, 300};
+    vt2::Scene      scene{&renderer, 2, 400, 300, 800, 600};
     bool            loop{true};
 
     renderer.setDrawBlendMode(SDL_BLENDMODE_BLEND);
     scene.addSprite(&sprite1, 1, "sprite1");
     scene.addSprite(&sprite2, 0, "sprite2");
-    scene.getSprite("sprite1")->rotate(90);
-    scene.getSprite("sprite2")->move(100, 0).setFlip(SDL_FLIP_VERTICAL);
+    scene.moveSprite("sprite1", 100, 0);
     // scene.removeSprite("sprite2");
     while (loop)
     {
