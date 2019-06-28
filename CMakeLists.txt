@@ -14,6 +14,7 @@ find_package(Vik_Wrap REQUIRED)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/input
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include/messageBox
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/lvik
                     ${VIK_WRAP_INCLUDE_DIR}
                     ${SDL2_INCLUDE_DIR}
