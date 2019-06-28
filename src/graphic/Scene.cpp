@@ -50,6 +50,60 @@ Scene   &Scene::draw()
     return (*this);
 }
 
+Scene   &Scene::move(const int &dx, const int &dy)
+{
+    m_rendererSprite.move(dx, dy);
+    return (*this);
+}
+
+Scene   &Scene::setPosition(const int &x, const int &y)
+{
+    m_rendererSprite.setPosition(x, y);
+    return (*this);
+}
+
+Scene   &Scene::rotate(const float &angle)
+{
+    m_rendererSprite.rotate(angle);
+    return (*this);
+}
+
+Scene   &Scene::setCenter(const int &x, const int &y)
+{
+    m_rendererSprite.setCenter(vra::Point{x, y});
+    return (*this);
+}
+
+Scene   &Scene::setWidth(const int &width)
+{
+    m_rendererSprite.setWidth(width);
+    return (*this);
+}
+
+Scene   &Scene::setHeight(const int &height)
+{
+    m_rendererSprite.setHeight(height);
+    return (*this);
+}
+
+Scene   &Scene::setFlip(const SDL_RendererFlip &sdlFlip)
+{
+    m_rendererSprite.setFlip(sdlFlip);
+    return (*this);
+}
+
+Scene   &Scene::hide()
+{
+    m_rendererSprite.hide();
+    return (*this);
+}
+
+Scene   &Scene::show()
+{
+    m_rendererSprite.show();
+    return (*this);
+}
+
 Scene   &Scene::addSprite(Sprite *sprite,
                           const int &i_ground,
                           const std::string &key)

@@ -11,18 +11,6 @@
 namespace vt2
 {
 
-
-enum spriteModication {SPRITE_SET_TEXTURE,
-                       SPRITE_MOVE,
-                       SPRITE_SET_POSITION,
-                       SPRITE_SET_WIDTH,
-                       SPRITE_SET_HEIGHT,
-                       SPRITE_ROTATE,
-                       SPRITE_SET_FLIP,
-                       SPRITE_SET_CENTER,
-                       SPRITE_HIDE,
-                       SPRITE_SHOW};
-
 class Scene
 {
  private:
@@ -45,7 +33,27 @@ class Scene
 
     ~Scene() = default;
 
-    Scene   &draw();
+    Scene           &draw();
+
+    Scene           &move(const int &dx, const int &dy);
+
+    Scene           &setPosition(const int &x, const int &y);
+
+    Scene           &rotate(const float &angle);
+
+    Scene           &setCenter(const int &x, const int &y);
+
+    Scene           &setWidth(const int &width);
+
+    Scene           &setHeight(const int &height);
+
+    Scene           &setFlip(const SDL_RendererFlip &sdlFlip);
+
+    Scene           &hide();
+
+    Scene           &show();
+
+    const Sprite    &getSprite() const;
 
     Scene           &addSprite(Sprite *sprite,
                        const int &i_ground,

@@ -42,6 +42,18 @@ int     main()
         {
             loop = false;
         }
+        if (event.isKeyPressed(SDL_SCANCODE_D))
+            scene.move(1, 0);
+        if (event.isKeyPressed(SDL_SCANCODE_A))
+            scene.move(-1, 0);
+        if (event.isKeyPressed(SDL_SCANCODE_S))
+            scene.move(0, 1);
+        if (event.isKeyPressed(SDL_SCANCODE_W))
+            scene.move(0, -1);
+        if (event.isKeyPressed(SDL_SCANCODE_Q))
+            scene.rotate(-1);
+        if (event.isKeyPressed(SDL_SCANCODE_E))
+            scene.rotate(1);
         scene.draw();
         renderer.setDrawColor(255, 0, 0, 255);
         renderer.draw();
