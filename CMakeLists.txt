@@ -13,7 +13,7 @@ find_package(Vik_Wrap REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/input
-                    ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
+                #     ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/messageBox
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/lvik
                     ${VIK_WRAP_INCLUDE_DIR}
@@ -21,16 +21,25 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
                     ${SDL2_IMAGE_INCLUDE_DIR}
                     ${SDL2_TTF_INCLUDE_DIR})
 
-# add_library(${PROJECT_NAME})
-
 add_executable(${PROJECT_NAME}
         src/graphic/Sprite.cpp
-        src/graphic/Camera.cpp
         src/graphic/Text.cpp
         src/graphic/Scene.cpp
-        src/physic/Object.cpp
+        # src/physic/Object.cpp
+        # src/physic/TileObject.cpp
+        # src/physic/CircleObject.cpp
         src/lvik/vikString.cpp
         src/main.cpp)
+
+
+# add_library(${PROJECT_NAME} STATIC
+#         src/graphic/Sprite.cpp
+#         src/graphic/Text.cpp
+#         # src/graphic/Scene.cpp
+#         # src/physic/Object.cpp
+#         # src/physic/TileObject.cpp
+#         # src/physic/CircleObject.cpp
+#         src/lvik/vikString.cpp)
 
 
 set(LIBRARIES -L/${VIK_WRAP_LIBRARY_DIR} ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY} ${VIK_WRAP_LIBRARY})

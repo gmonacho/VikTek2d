@@ -6,19 +6,21 @@
 namespace vt2
 {
 
-template<typename T>
 class Object
 {
  private:
     int         m_mass;
-    T           m_hitbox;
+    vra::Point  m_hitbox;
     vra::Point  m_velocity;
 
  public:
     void                setXVelocity(const int &xVelocity);
     void                setYVelocity(const int &yVelocity);
     const vra::Point    &getVelocity() const;
+    void                move();
 
+    void                setMass(const int &mass);
+    const int           &getMass() const;
 };
 
 }   //  namespace vt2

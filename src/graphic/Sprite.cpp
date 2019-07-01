@@ -1,7 +1,6 @@
 #include <Sprite.h>
 #include <Rect.h>
 #include <Renderer.h>
-#include <Camera.h>
 
 namespace vt2
 {

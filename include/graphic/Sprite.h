@@ -4,7 +4,6 @@
 #include <string>
 #include <Texture.h>
 #include <Rect.h>
-#include "Camera.h"
 
 namespace vt2
 {

@@ -14,7 +14,7 @@ namespace vt2
 class Scene
 {
  private:
-    std::vector<std::map<std::string, Sprite*>>    m_sprites;
+    std::vector<std::map<std::string, Sprite>>    m_sprites;
 
     vra::Renderer   *m_renderer;
     vra::Texture    m_texture;
@@ -53,13 +53,15 @@ class Scene
 
     Scene           &show();
 
-    const Sprite    &getSprite() const;
-
-    Scene           &addSprite(Sprite *sprite,
-                       const int &i_ground,
-                       const std::string &key);
+    Scene           &addSprite(vra::Texture *texture,
+                               const int &x,
+                               const int &y,
+                               const int &w,
+                               const int &h,
+                               const int &i_ground,
+                               const std::string &key);
     Scene           &removeSprite(const std::string &key);
-    const Sprite    *getSprite(const std::string &key);
+    const Sprite    &getSprite(const std::string &key);
     Scene           &setSpriteTexture(const std::string &key,
                                       vra::Texture *texture);
     Scene           &moveSprite(const std::string &key,
