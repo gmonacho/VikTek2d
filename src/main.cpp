@@ -8,8 +8,11 @@
 #include "vikString.h"
 #include "Text.h"
 #include "Sprite.h"
-#include "Scene.h"
-// #include "TileObject.h"
+
+static bool testSprite(vra::Renderer *renderer)
+{
+    return (true);
+}
 
 int     main()
 {
@@ -19,13 +22,10 @@ int     main()
                            SDL_WINDOW_SHOWN};
     vra::Renderer   renderer{window, true, 0};
     vra::Event      event{};
-    vra::Texture    texture{&renderer, "./floss.png"};
-    vra::Texture    texture2{&renderer, "./png_des.png"};
-    vra::Texture    bgTexture{&renderer, "./unity-2d-background-texture.png"};
-    vt2::Scene      scene{&renderer, 3, 400, 300, 800, 600};
+    vra::Texture    flossTexture{&renderer, "floss.png"};
+    vt2::Sprite     flossSprite{&renderer, &flossTexture, 400, 300, 200, 300};
     bool            loop{true};
 
-    scene.addSprite(&texture, 400, 300, 100, 200, 2, "player");
     renderer.setDrawBlendMode(SDL_BLENDMODE_BLEND);
     while (loop)
     {
@@ -37,8 +37,8 @@ int     main()
         {
             loop = false;
         }
+        flossSprite.draw();
         renderer.setDrawColor(255, 0, 0, 255);
-        scene.draw();
         renderer.draw();
     }
     std::cout << "Hello World !" << std::endl;

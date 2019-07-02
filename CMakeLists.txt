@@ -13,7 +13,7 @@ find_package(Vik_Wrap REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/input
-                #     ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
+                    ${CMAKE_CURRENT_SOURCE_DIR}/include/physic
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/messageBox
                     ${CMAKE_CURRENT_SOURCE_DIR}/include/lvik
                     ${VIK_WRAP_INCLUDE_DIR}
@@ -22,12 +22,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/graphic
                     ${SDL2_TTF_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME}
+        src/graphic/GraphicObject.cpp
         src/graphic/Sprite.cpp
         src/graphic/Text.cpp
-        src/graphic/Scene.cpp
-        # src/physic/Object.cpp
-        # src/physic/TileObject.cpp
-        # src/physic/CircleObject.cpp
+        # src/graphic/Scene.cpp
         src/lvik/vikString.cpp
         src/main.cpp)
 

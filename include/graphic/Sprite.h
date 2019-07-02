@@ -4,22 +4,25 @@
 #include <string>
 #include <Texture.h>
 #include <Rect.h>
+#include "GraphicObject.h"
 
 namespace vt2
 {
 
-class Sprite
+class Sprite : public GraphicObject
 {
  private:
+    vra::Renderer       *m_renderer;
     vra::Texture        *m_texture;
-    int                 m_x, m_y, m_w, m_h;
+    vra::Rect           m_rect;
     float               m_angle;
     SDL_RendererFlip    m_flip;
     vra::Point          m_center;
     bool                m_hidden;
 
  public:
-    Sprite(vra::Texture *texture,
+    Sprite(vra::Renderer *renderer,
+           vra::Texture *texture,
            const int &x,
            const int &y,
            const int &w,
@@ -27,119 +30,11 @@ class Sprite
 
     virtual             ~Sprite() = default;
 
-   /**
-    * @brief  draw the sprite
-    * @note 
-    * @param  *renderer: renderer where the sprite will be draw
-    * @retval the sprite reference
-    */
-    Sprite              &draw(vra::Renderer *renderer);
+    void                draw() const override;
 
     Sprite              &setTexture(vra::Texture *texture);
 
     vra::Texture        *getTexture();
-
-    /**
-     * @brief  move the sprite
-     * @note   
-     * @param  &dx: x distance
-     * @param  &dy: y distance
-     * @retval the sprite reference
-     */
-    Sprite              &move(const int &dx, const int &dy);
-
-    /**
-     * @brief  get the sprite's position
-     * @note   
-     * @retval vra::Point position{x, y}
-     */
-    vra::Point          getPosition() const;
-
-     /**
-      * @brief  set the sprite's position
-      * @note   
-      * @param  &x: x sprite's position
-      * @param  &y: y sprite's position
-      * @retval 
-      */
-    Sprite              &setPosition(const int &x, const int &y);
-
-    /**
-     * @brief  get the sprite's size
-     * @note   
-     * @retval the sprite's size
-     */
-    vra::Point          getSize();
-
-     /**
-      * @brief  set the sprite's width
-      * @note   only if new width >= 0
-      * @param  &width: new width
-      * @retval the sprite reference
-      */
-    Sprite              &setWidth(const int &width);
-
-     /**
-      * @brief  set the sprite's height
-      * @note   only if new height >= 0
-      * @param  &height: new height
-      * @retval the sprite reference
-      */
-    Sprite              &setHeight(const int &height);
-
-    /**
-     * @brief  rotate the sprite
-     * @note   
-     * @param  angle: angle in degree
-     * @retval None
-     */
-    Sprite              &rotate(const float &angle);
-
-   /**
-    * @brief  set the sprite split way
-    * @note   
-    * @param  &flip: 
-    *                 SDL_FLIP_HORIZONTAL
-    *                 SDL_FLIP_VERTICAL
-    *                 SDL_FLIP_NONE
-    * @retval the sprite's reference
-    */
-    Sprite              &setFlip(const SDL_RendererFlip &sdlFlip);
-
-    /**
-     * @brief  get sprite's angle rotation
-     * @note   
-     * @retval sprite's angle rotation
-     */
-    const float        &getAngle() const;
-
-    /**
-     * @brief  get sprite's center position
-     * @note   
-     * @retval sprite's center position
-     */
-    const vra::Point    &getCenter() const;
-
-    /**
-     * @brief  set sprite's center position
-     * @note   
-     * @retval sprite's center position
-     */
-    Sprite              &setCenter(const vra::Point &center);
-
-     /**
-      * @brief  hide the sprite
-      * @note   
-      * @retval sprite's reference
-      */
-    Sprite              &hide();
-
-     /**
-      * @brief  show the sprite
-      * @note   
-      * @retval sprite's reference
-      */
-    Sprite              &show();
 };
 
 }   //  namespace vt2
