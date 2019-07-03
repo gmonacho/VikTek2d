@@ -30,7 +30,7 @@ class Sprite : public GraphicObject
 
     virtual             ~Sprite() = default;
 
-    void                draw() const override;
+    void                draw() override;
 
     Sprite              &setTexture(vra::Texture *texture);
 

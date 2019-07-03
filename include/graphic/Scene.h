@@ -2,26 +2,30 @@
 #define GRAPHIC_SCENE_H_
 
 #include <vector>
-#include <map>
+#include <forward_list>
 #include <string>
 #include <Renderer.h>
 #include <Texture.h>
-#include "Sprite.h"
+#include "GraphicObject.h"
 
 namespace vt2
 {
+class Sprite;
 
-class Scene
+class Scene : public GraphicObject
 {
  private:
-    std::vector<std::map<std::string, Sprite>>    m_sprites;
 
-    vra::Renderer   *m_renderer;
-    vra::Texture    m_texture;
-    Sprite          m_rendererSprite;
+    vra::Renderer                               *m_renderer;
+    vra::Rect                                   m_rect;
+    float                                       m_angle;
+    SDL_RendererFlip                            m_flip;
+    vra::Point                                  m_center;
+    bool                                        m_hidden;
+    vra::Texture                                m_texture;
+    std::vector<std::forward_list <Sprite*>>    m_grounds;
 
-
-    Scene          &updateRendererSprite();
+    Scene          &updateScene();
 
  public:
     Scene(vra::Renderer *renderer,
@@ -31,57 +35,12 @@ class Scene
           const int &w,
           const int &h);
 
-    ~Scene() = default;
+    virtual ~Scene() = default;
 
-    Scene           &draw();
+    void            draw() override;
 
-    Scene           &move(const int &dx, const int &dy);
+    Scene           &addSprite(Sprite *sprite, const int &groundIndex);
 
-    Scene           &setPosition(const int &x, const int &y);
-
-    Scene           &rotate(const float &angle);
-
-    Scene           &setCenter(const int &x, const int &y);
-
-    Scene           &setWidth(const int &width);
-
-    Scene           &setHeight(const int &height);
-
-    Scene           &setFlip(const SDL_RendererFlip &sdlFlip);
-
-    Scene           &hide();
-
-    Scene           &show();
-
-    Scene           &addSprite(vra::Texture *texture,
-                               const int &x,
-                               const int &y,
-                               const int &w,
-                               const int &h,
-                               const int &i_ground,
-                               const std::string &key);
-    Scene           &removeSprite(const std::string &key);
-    const Sprite    &getSprite(const std::string &key);
-    Scene           &setSpriteTexture(const std::string &key,
-                                      vra::Texture *texture);
-    Scene           &moveSprite(const std::string &key,
-                                const int &dx,
-                                const int &dy);
-    Scene           &setSpritePosition(const std::string &key,
-                                       const int &x,
-                                       const int &y);
-    Scene           &setSpriteWidth(const std::string &key,
-                                    const int &width);
-    Scene           &setSpriteHeight(const std::string &key,
-                                     const int &height);
-    Scene           &rotateSprite(const std::string &key,
-                                  const float &angle);
-    Scene           &setSpriteFlip(const std::string &key,
-                                   const SDL_RendererFlip &sdlFlip);
-    Scene           &setSpriteCenter(const std::string &key,
-                                     const vra::Point &center);
-    Scene           &hideSprite(const std::string &key);
-    Scene           &showSprite(const std::string &key);
 };
 
 }   //  namespace vt2

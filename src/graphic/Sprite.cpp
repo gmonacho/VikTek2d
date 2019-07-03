@@ -18,7 +18,7 @@ Sprite::Sprite(vra::Renderer *renderer,
                m_center(vra::Point{w / 2, h / 2}),
                m_hidden(false) {}
 
-void              Sprite::draw() const
+void              Sprite::draw()
 {
     vra::Rect   rect;
 

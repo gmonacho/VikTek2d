@@ -8,6 +8,7 @@
 #include "vikString.h"
 #include "Text.h"
 #include "Sprite.h"
+#include "Scene.h"
 
 static bool testSprite(vra::Renderer *renderer)
 {
@@ -24,8 +25,13 @@ int     main()
     vra::Event      event{};
     vra::Texture    flossTexture{&renderer, "floss.png"};
     vt2::Sprite     flossSprite{&renderer, &flossTexture, 400, 300, 200, 300};
+    vra::Texture    bgTexture{&renderer, "background.png"};
+    vt2::Sprite     bgSprite{&renderer, &bgTexture, 400, 300, 800, 600};
     bool            loop{true};
+    vt2::Scene      scene{&renderer, 3, 400, 300, 800, 600};
 
+    scene.addSprite(&bgSprite, 0);
+    scene.addSprite(&flossSprite, 2);
     renderer.setDrawBlendMode(SDL_BLENDMODE_BLEND);
     while (loop)
     {
@@ -37,7 +43,7 @@ int     main()
         {
             loop = false;
         }
-        flossSprite.draw();
+        scene.draw();
         renderer.setDrawColor(255, 0, 0, 255);
         renderer.draw();
     }

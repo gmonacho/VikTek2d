@@ -25,7 +25,7 @@ add_executable(${PROJECT_NAME}
         src/graphic/GraphicObject.cpp
         src/graphic/Sprite.cpp
         src/graphic/Text.cpp
-        # src/graphic/Scene.cpp
+        src/graphic/Scene.cpp
         src/lvik/vikString.cpp
         src/main.cpp)
 

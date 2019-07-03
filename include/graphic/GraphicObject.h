@@ -22,7 +22,7 @@ class GraphicObject
     virtual GraphicObject           &setRenderer(vra::Renderer *renderer);
     virtual vra::Renderer           *getRenderer() const;
 
-    virtual void                    draw() const = 0;
+    virtual void                    draw() = 0;
 
     virtual GraphicObject           &move(const int &dx, const int &dy);
 
